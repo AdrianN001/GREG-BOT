@@ -22,7 +22,7 @@ export default {
         const idk = new IMAGE_MANIPULATOR(message.author,MODS.OHNO,undefined,undefined,args.join(" "));
         const image = await idk.MAIN();
         
-        message.channel.send({files:[new MessageAttachment(image, "idk.gif")]})
+        message.channel.send({files:[image]});
     }
 
 
