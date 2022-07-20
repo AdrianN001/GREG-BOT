@@ -41,7 +41,7 @@ export default {
 
         const image = await manipulator.MAIN();
 
-        message.channel.send({files:[new MessageAttachment(image, "idk.gif")]})
+        message.channel.send({files:[image]});
     }
 
 
