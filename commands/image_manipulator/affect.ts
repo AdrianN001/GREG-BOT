@@ -38,8 +38,8 @@ export default {
         const manipulator = new IMAGE_MANIPULATOR(idk,MODS.AFFECT);
 
         const image = await manipulator.MAIN();
-
-        message.channel.send({attachments: [new MessageAttachment(image, "image.gif")] });
+        
+        message.channel.send({files:[new MessageAttachment(image, "idk.gif")]})
     }
 
 
