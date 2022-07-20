@@ -37,11 +37,11 @@ export default {
 
 
 
-        const manipulator = new IMAGE_MANIPULATOR(idk,MODS.TRIGGER);
+        const manipulator = new IMAGE_MANIPULATOR(idk,MODS.TRASH);
 
         const image = await manipulator.MAIN();
 
-        message.channel.send({files:[new MessageAttachment(image, "idk.gif")]})
+        message.channel.send({files:[image]});
     }
 
 
