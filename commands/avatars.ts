@@ -13,12 +13,12 @@ export default
             const user = message.mentions.users.first();
             if (user)
             {
-                message.reply(user.avatarURL()!);
+                message.reply(user.displayAvatarURL({format: "gif"})!);
             }
                 
             else
             {
-                message.reply(message.author.avatarURL()!);
+                message.reply(message.author.displayAvatarURL({format: "gif"})!);
             }
         }
         
