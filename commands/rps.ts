@@ -76,17 +76,13 @@ export default {
             
                             const value = collected.values[0]
                             choices.set(collected.user, value)
+
+                            
+                            console.log(collected.user, value)
                         }
                     })
                 })
                 
-                delay(1000)
-
-                for (const [key, value] of choices)
-                {
-                    console.log(`${key} -> ${value}`)
-                }
-            
                 
         }
     })
