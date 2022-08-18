@@ -12,7 +12,11 @@ export default {
 
 
 
-    callback: ({message,args}) => {
+    callback: async ({message,args}) => {
+
+
+        const delay = (ms: number | undefined) => new Promise(res => setTimeout(res, ms));
+
         const player_1 = message.author
         const player_2 = message.mentions.users.first() // Player 2 deklaralas
 
@@ -76,6 +80,7 @@ export default {
                     })
                 })
                 
+                delay(1000)
 
                 for (const [key, value] of choices)
                 {

@@ -60,7 +60,7 @@ class RPS
                         .setColor("#0099ff")
                         .addField("Arra kérnélek most meg, hogy válasszál a listábol egyet, az elenfeled is jelenleg ugyanezt látja", `Jelenlegi ellenfeled: ${enemy.username} `, false)
                         .addField("Segitség képpen itt van egy rajz a lehetséges választásokról", "A nyil mindig afelé mutat amit megver", false)
-                        .setImage("attachments://assets/imgs/PCB_NYAK.png")
+                        //.setImage("attachments://assets/imgs/PCB_NYAK.png")
         return embed
     }
 
