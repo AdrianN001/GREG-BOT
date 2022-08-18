@@ -28,7 +28,7 @@ export default {
         let is_playing = false;
         
         reply_collector.on("collect", async (message: DISCORDjs.Message) => {
-            if (message.content !== "Igen" ) {message.channel.send("Visszautasitva ):"); return}
+            if (message.content.toLowerCase() !== "igen" ) {message.channel.send("Visszautasitva ):"); return}
             else { 
                 is_playing = true; 
                 
