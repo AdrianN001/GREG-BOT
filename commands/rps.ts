@@ -22,14 +22,15 @@ export default {
                             //3x megtageli
         message.channel.send({content: `<@${player_2.id}> \n`.repeat(3), embeds: [game.generate_starting_ember()]})
         
-        const reply_collector = new MessageCollector(message.channel,{time: 30000000})
+        const reply_collector = new MessageCollector(message.channel,{time: 30000000, max: 1})
         reply_collector.filter = (reply: DISCORDjs.Message) => reply.author.id === player_2.id
 
         let is_playing = false;
         
         reply_collector.on("collect", async (message: DISCORDjs.Message) => {
-            if (message.content.toLowerCase() !== "igen" ) {message.channel.send("Visszautasitva ):"); return}
+            if (message.content.toLowerCase() !== "igen" ) {message.channel.send("Visszautasitva ):"); reply_collector.stop(); return}
             else { 
+                reply_collector.stop();
                 is_playing = true; 
                 
             }
@@ -40,6 +41,7 @@ export default {
 
         [player_1, player_2].forEach(async (player: DISCORDjs.User) => 
         {
+            console.log(player)
             embeds.push(await player.send({embeds: [game.generate_main_embed(player == player_1 ? player_2: player_1)] , components: [RPS.generate_rows()]}))
         }) // send game for every player
 
