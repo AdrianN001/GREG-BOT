@@ -28,8 +28,13 @@ export default {
         let is_playing = false;
         
         reply_collector.on("collect", async (message: DISCORDjs.Message) => {
-            if (message.content.toLowerCase() !== "igen" ) {message.channel.send("Visszautasitva ):"); reply_collector.stop(); return}
+            if (message.content.toLowerCase() !== "igen" ) {
+                message.channel.send("Visszautasitva ):"); 
+                reply_collector.stop(); 
+                return
+            }
             else { 
+                message.channel.send("Elfogadva");
                 reply_collector.stop();
                 is_playing = true; 
                 
@@ -37,11 +42,14 @@ export default {
         }) 
         if (!is_playing ){return;}
 
+        console.log(player_1.username)
+        console.log(player_2.username)
+
         let embeds: DISCORDjs.Message[] = []; 
 
         [player_1, player_2].forEach(async (player: DISCORDjs.User) => 
         {
-            console.log(player)
+            
             embeds.push(await player.send({embeds: [game.generate_main_embed(player == player_1 ? player_2: player_1)] , components: [RPS.generate_rows()]}))
         }) // send game for every player
 
