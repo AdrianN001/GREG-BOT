@@ -1,4 +1,4 @@
-import DISCORDjs, { MessageCollector } from 'discord.js';
+import DISCORDjs, { DMChannel, MessageCollector } from 'discord.js';
 import { ICommand } from 'wokcommands';
 import RPS from '../assets/classes/rock_paper_scissor';
 
@@ -60,16 +60,18 @@ export default {
                     [player_2, "asd"]
                 ])
 
-                const filter = (interaction: any) => interaction.user.id === player_1.id && interaction.user.id === player_2.id
+                const filter = (interaction: any) => interaction.user.id === player_1.id && interaction.user.id === player_2.id;
                 
 
                 // attach collector to every embed that has been sended
 
-                embeds.forEach(message => 
+                [player_1, player_2].forEach((user:DISCORDjs.User) => 
                 {
-                    const collector = message.createMessageComponentCollector({filter:filter,
+                    const channel = user.dmChannel
+
+                    const collector = channel!.createMessageComponentCollector({filter:filter,
                     componentType: "SELECT_MENU",
-                    time: 1000})
+                    time: 6000})
 
                     collector.on("collect", async (collected) => {
                         if ([...choices.keys()].includes(collected.user)){
@@ -77,7 +79,7 @@ export default {
                             const value = collected.values[0]
                             choices.set(collected.user, value)
 
-                            
+
                             console.log(collected.user, value)
                         }
                     })

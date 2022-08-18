@@ -38,12 +38,13 @@ class RPS
                             new MessageSelectMenu()
                             .setCustomId("Kő Papir Olló 2")
                             .setPlaceholder("Válassz egyet")
+                            
                             .addOptions(
                                 [...RPS.MAP.keys()].map((key: string) => 
                                 {
                                     return {
                                         label: key,
-                                        description: `Veri Ezeket: ${RPS.MAP.get(key)?.join(" ")}`,
+                                        description: `Veri Ezeket: ${RPS.MAP.get(key)?.join(" ,")}`,
                                         value: key
                                     }
                                 })
@@ -58,8 +59,9 @@ class RPS
                         .setTitle("Kő papir Olló")
                         .setAuthor("11.E Rulez")
                         .setColor("#0099ff")
-                        .addField("Arra kérnélek most meg, hogy válasszál a listábol egyet, az elenfeled is jelenleg ugyanezt látja", `Jelenlegi ellenfeled: ${enemy.username} `, false)
+                        .addField("Arra kérnélek most meg, hogy válasszál a listábol egyet, erre 6 másodperced van", `Jelenlegi ellenfeled: ${enemy.username} `, false)
                         .addField("Segitség képpen itt van egy rajz a lehetséges választásokról", "A nyil mindig afelé mutat amit megver", false)
+                        .setFooter("az elenfeled is jelenleg ugyanezt látja")
                         //.setImage("attachments://assets/imgs/PCB_NYAK.png")
         return embed
     }
