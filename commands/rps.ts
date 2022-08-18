@@ -71,11 +71,11 @@ export default {
                 {
                     const channel = user.dmChannel
 
-                    const collector = channel!.createMessageComponentCollector({filter:filter,
+                    const collector = channel?.createMessageComponentCollector({filter:filter,
                     componentType: "SELECT_MENU",
                     time: 6000})
 
-                    collector.on("collect", async (collected) => {
+                    collector?.on("collect", async (collected) => {
                         if ([...choices.keys()].includes(collected.user)){
             
                             const value = collected.values[0]
