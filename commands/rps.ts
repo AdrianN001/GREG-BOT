@@ -44,12 +44,14 @@ export default {
                 console.log(player_1.username)
                 console.log(player_2.username)
 
-                let embeds: DISCORDjs.Message[] = []; 
 
-                [player_1, player_2].forEach(async (player: DISCORDjs.User) => 
+                const players : DISCORDjs.User[] = [player_1, player_2];
+
+                players.forEach(async (player: DISCORDjs.User) => 
                 {
                     
-                    embeds.push(await player.send({embeds: [game.generate_main_embed(player == player_1 ? player_2: player_1)] , components: [RPS.generate_rows()]}))
+                    player.send({embeds: [game.generate_main_embed(player == player_1 ? player_2: player_1)] , components: [RPS.generate_rows()]});
+
                 }) // send game for every player
 
 
@@ -65,7 +67,7 @@ export default {
 
                 // attach collector to every embed that has been sended
 
-                [player_1, player_2].forEach((user:DISCORDjs.User) => 
+                players.forEach((user:DISCORDjs.User) => 
                 {
                     const channel = user.dmChannel
 
