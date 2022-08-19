@@ -90,7 +90,7 @@ export default {
                             
                 
                     const value = collected.values[0]
-                    choices.set(collected.user, value)
+                    choices.set(player_1, value)
     
                             
                     console.log(collected.user, value)
@@ -112,7 +112,7 @@ export default {
                                 
                     
                         const value = collected.values[0]
-                        choices.set(collected.user, value)
+                        choices.set(player_2, value)
         
                                 
                         console.log(collected.user, value)
@@ -130,7 +130,7 @@ export default {
                 
 
             
-                const winner = await game.decision(choices.get(player_1)!,choices.get(player_2)!) //await-elni kell, mivel tartalmaz egy 7 sec-es delay-t
+                const winner = await game.decision(choices.get(player_1)!,choices.get(player_2)!, choices) //await-elni kell, mivel tartalmaz egy 7 sec-es delay-t
 
                 if (!winner)
                 {
