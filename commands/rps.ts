@@ -70,26 +70,27 @@ export default {
 
                 // attach collector to every embed that has been sended
 
-                messages.forEach((message:DISCORDjs.Message) => 
+                players.forEach((player:DISCORDjs.User) => 
                 {
-                   
+                    if (player.dmChannel){
 
-                    const collector = message.createMessageComponentCollector({filter:filter,
-                    componentType: "SELECT_MENU",
-                    time: 6000})
-
-                    collector.on("collect", (collected) => {
-                        
-            
-                        const value = collected.values[0]
-                        choices.set(collected.user, value)
-
-
-                        console.log(collected.user, value)
-
-                        collected.reply({content: `${value}-t választottad ki`})
-                        
-                    })
+                        const collector = player.dmChannel.createMessageComponentCollector({filter:filter,
+                        componentType: "SELECT_MENU",
+                        time: 6000})
+    
+                        collector.on("collect", (collected) => {
+                            
+                
+                            const value = collected.values[0]
+                            choices.set(collected.user, value)
+    
+    
+                            console.log(collected.user, value)
+    
+                            collected.reply({content: `${value}-t választottad ki`})
+                            
+                        })
+                    }
                 })
                 
                 
