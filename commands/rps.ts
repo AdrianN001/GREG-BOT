@@ -80,7 +80,7 @@ export default {
                         collector.on("collect", (collected) => {
                             
                             console.log("asdsda")
-                            collected.deferUpdate()
+                            
                 
                             const value = collected.customId
                             choices.set(collected.user, value)
