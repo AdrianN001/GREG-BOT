@@ -47,11 +47,14 @@ export default {
 
                 const players : DISCORDjs.User[] = [player_1, player_2];
 
+                const messages : DISCORDjs.Message[] = [];
+
                 players.forEach(async (player: DISCORDjs.User) => 
                 {
                     
-                    player.send({embeds: [game.generate_main_embed(player == player_1 ? player_2: player_1)] , components: [RPS.generate_rows()]});
-
+                    const message = await player.send({embeds: [game.generate_main_embed(player == player_1 ? player_2: player_1)] , components: [RPS.generate_rows()]});
+                    
+                    messages.push(message)
                 }) // send game for every player
 
 
@@ -67,15 +70,15 @@ export default {
 
                 // attach collector to every embed that has been sended
 
-                players.forEach((user:DISCORDjs.User) => 
+                messages.forEach((message:DISCORDjs.Message) => 
                 {
-                    const channel = user.dmChannel
+                   
 
-                    const collector = channel?.createMessageComponentCollector({filter:filter,
+                    const collector = message.createMessageComponentCollector({filter:filter,
                     componentType: "SELECT_MENU",
                     time: 6000})
 
-                    collector?.on("collect", async (collected) => {
+                    collector.on("collect", async (collected) => {
                         if ([...choices.keys()].includes(collected.user)){
             
                             const value = collected.values[0]
