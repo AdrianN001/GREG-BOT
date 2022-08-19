@@ -73,6 +73,7 @@ export default {
                 players.forEach((player:DISCORDjs.User) => 
                 {
                     if (player.dmChannel){
+                        console.log("AsdDSA")
 
                         const collector = player.dmChannel.createMessageComponentCollector({filter:filter,
                         componentType: "SELECT_MENU",
