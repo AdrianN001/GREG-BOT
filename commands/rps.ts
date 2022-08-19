@@ -71,8 +71,10 @@ export default {
                 // attach collector to every embed that has been sended
 
                 
-                const dmchannel_1 = player_1.dmChannel || await player_1.createDM(true)
-                const dmchannel_2 = player_2.dmChannel || await player_2.createDM(true)  
+                // const dmchannel_1 = player_1.dmChannel || await player_1.createDM(true)
+                // const dmchannel_2 = player_2.dmChannel || await player_2.createDM(true)  
+
+                const [dmchannel_1, dmchannel_2] = messages
                         
 
                 let collector_1 = dmchannel_1.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 60000})
