@@ -78,17 +78,17 @@ export default {
                     componentType: "SELECT_MENU",
                     time: 6000})
 
-                    collector.on("collect", async (collected) => {
-                        if ([...choices.keys()].includes(collected.user)){
+                    collector.on("collect", (collected) => {
+                        
             
-                            const value = collected.values[0]
-                            choices.set(collected.user, value)
+                        const value = collected.values[0]
+                        choices.set(collected.user, value)
 
 
-                            console.log(collected.user, value)
+                        console.log(collected.user, value)
 
-                            collected.reply({content: `${value}-t választottad ki`})
-                        }
+                        collected.reply({content: `${value}-t választottad ki`})
+                        
                     })
                 })
                 
