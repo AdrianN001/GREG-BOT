@@ -72,7 +72,7 @@ export default {
 
                 players.forEach(async (player:DISCORDjs.User) => 
                 {
-                        const dmchannel = player.dmChannel || await player.createDM() 
+                        const dmchannel = player.dmChannel || await player.createDM(true) 
                         console.log("AsdDSA")
 
                         const collector = dmchannel.createMessageComponentCollector({filter:filter,
