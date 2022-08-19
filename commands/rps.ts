@@ -93,28 +93,7 @@ export default {
                         })
                     }
                 )
-                messages.forEach(async (message:DISCORDjs.Message) => 
-                {
-                        
-
-                        const collector = message.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 6000})
-    
-                        collector.on("collect", (collected) => {
-                            
-                            console.log("ASDASD")
-                            collected.deferUpdate()
                 
-                            const value = collected.customId
-                            choices.set(collected.user, value)
-    
-    
-                            console.log(collected.user, value)
-    
-                            collected.reply({content: `${value}-t választottad ki`})
-                            
-                        })
-                    }
-                )
                 
                 
         }
