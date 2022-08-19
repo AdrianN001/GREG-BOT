@@ -130,7 +130,7 @@ export default {
                 
 
             
-                const winner = await game.decision(choices.get(player_1)!,choices.get(player_2)!) //await-elni kell, mivel tartalmaz egy 6 sec-es delay-t
+                const winner = await game.decision(choices.get(player_1)!,choices.get(player_2)!) //await-elni kell, mivel tartalmaz egy 15 sec-es delay-t
 
                 if (!winner)
                 {
