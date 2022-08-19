@@ -65,7 +65,7 @@ export default {
                     [player_2, "asd"]
                 ])
 
-                const filter = (interaction: any) => interaction.user.id === player_1.id && interaction.user.id === player_2.id;
+                
                 
 
                 // attach collector to every embed that has been sended
@@ -73,16 +73,38 @@ export default {
                 players.forEach(async (player:DISCORDjs.User) => 
                 {
                         const dmchannel = player.dmChannel || await player.createDM(true) 
-                        console.log("AsdDSA")
+                        
 
-                        const collector = dmchannel.createMessageComponentCollector({filter:filter,
-                        componentType: "SELECT_MENU",
-                        time: 6000})
+                        const collector = dmchannel.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 6000})
     
                         collector.on("collect", (collected) => {
                             
+                            console.log("asdsda")
+                            collected.deferUpdate()
                 
-                            const value = collected.values[0]
+                            const value = collected.customId
+                            choices.set(collected.user, value)
+    
+                            
+                            console.log(collected.user, value)
+    
+                            collected.reply({content: `${value}-t választottad ki`})
+                            
+                        })
+                    }
+                )
+                messages.forEach(async (message:DISCORDjs.Message) => 
+                {
+                        
+
+                        const collector = message.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 6000})
+    
+                        collector.on("collect", (collected) => {
+                            
+                            console.log("ASDASD")
+                            collected.deferUpdate()
+                
+                            const value = collected.customId
                             choices.set(collected.user, value)
     
     
