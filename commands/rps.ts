@@ -70,12 +70,12 @@ export default {
 
                 // attach collector to every embed that has been sended
 
-                players.forEach((player:DISCORDjs.User) => 
+                players.forEach(async (player:DISCORDjs.User) => 
                 {
-                    if (player.dmChannel){
+                        const dmchannel = player.dmChannel || await player.createDM() 
                         console.log("AsdDSA")
 
-                        const collector = player.dmChannel.createMessageComponentCollector({filter:filter,
+                        const collector = dmchannel.createMessageComponentCollector({filter:filter,
                         componentType: "SELECT_MENU",
                         time: 6000})
     
@@ -92,7 +92,7 @@ export default {
                             
                         })
                     }
-                })
+                )
                 
                 
         }
