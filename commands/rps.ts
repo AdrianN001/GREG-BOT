@@ -127,10 +127,10 @@ export default {
 
                 //gathering INFO
 
-                delay(6000) // ez kell ahhoz, hogy nehogy koran vegye fel a vegso dontest
+                
 
             
-                const winner = game.decision(choices.get(player_1)!,choices.get(player_2)!)
+                const winner = await game.decision(choices.get(player_1)!,choices.get(player_2)!) //await-elni kell, mivel tartalmaz egy 6 sec-es delay-t
 
                 if (!winner)
                 {

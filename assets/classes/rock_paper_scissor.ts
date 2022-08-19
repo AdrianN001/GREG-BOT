@@ -1,10 +1,5 @@
 import DISCORDJs, {MessageActionRow,MessageSelectMenu, User, TextChannel, MessageEmbed} from 'discord.js';
 
-function asd(b: number)
-{
-    return b * b
-}
-
 
 class RPS
 {
@@ -23,8 +18,12 @@ class RPS
 
     constructor(private player_1: User, private player_2: User){}
 
-    public decision( first: string, second: string) : User | void
+    public static delay = (ms: number | undefined) => new Promise(res => setTimeout(res, ms));
+
+    public async decision( first: string, second: string) :  Promise< User | void >
     {
+        await RPS.delay(6000)
+
         if (first === second) {return }
         let win: boolean = RPS.MAP.get(first)!.includes(second)
 
