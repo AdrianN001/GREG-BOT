@@ -75,20 +75,22 @@ export default {
                         const dmchannel = player.dmChannel || await player.createDM(true) 
                         
 
-                        const collector = dmchannel.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 6000})
+                        let collector = dmchannel.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 6000})
     
                         collector.on("collect", (collected) => {
                             
                             console.log("asdsda")
                             
                 
-                            const value = collected.customId
+                            const value = collected.values[0]
                             choices.set(collected.user, value)
     
                             
                             console.log(collected.user, value)
     
                             collected.reply({content: `${value}-t választottad ki`})
+
+                            collected.deferUpdate()
                             
                         })
                     }
