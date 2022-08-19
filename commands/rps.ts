@@ -21,6 +21,8 @@ export default {
         const player_2 = message.mentions.users.first() // Player 2 deklaralas
 
         if (!player_2){message.reply("Valakit meg kell tagelned, hogy játszhass vele"); return}
+        if (player_1 === player_2){message.reply("Magaddal akarsz játszani?"); message.react("💀"); return;}
+        if (player_2.bot){message.reply("A Második játékos egy bot"); return}
 
         const game = new RPS(player_1, player_2)
                             //3x megtageli
