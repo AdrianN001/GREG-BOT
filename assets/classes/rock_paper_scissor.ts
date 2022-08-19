@@ -23,7 +23,7 @@ class RPS
 
     constructor(private player_1: User, private player_2: User){}
 
-    private decision( first: string, second: string) : User | void
+    public decision( first: string, second: string) : User | void
     {
         if (first === second) {return }
         let win: boolean = RPS.MAP.get(first)!.includes(second)
@@ -82,6 +82,55 @@ class RPS
         .setFooter("Kő Papir Olló 2 Open BETA", "https://cdn.discordapp.com/attachments/986288476834123799/987469337357062204/Nev11erulezelen.png");
         
         return starting_embed;
+    }
+
+    public generate_draw(choices: Map<DISCORDJs.User, string>): MessageEmbed
+    {
+        const draw = new DISCORDJs.MessageEmbed()
+                                .setTimestamp()
+                                .setTitle("Döntetlen")
+                                .setAuthor("11.E Rulez")
+                                .setColor("DARK_BUT_NOT_BLACK")
+                                .addFields(
+                                    
+                                        [...choices.keys()].map((key: DISCORDJs.User) => 
+                                        {
+                                            const x = {
+                                                name : choices.get(key)!,
+                                                value: key.username,
+                                                inline: true
+                                            }
+                                            return x
+                                        })
+                                    
+                                )
+        return draw
+    }
+
+    public generate_winner(choices: Map<DISCORDJs.User, string>, winner: DISCORDJs.User): MessageEmbed
+    {
+
+        const winner_embed = new DISCORDJs.MessageEmbed()
+                                        .setTimestamp()
+                                        .setTitle(winner.username)
+                                        .setDescription("Győzelem")
+                                        .setThumbnail("https://cdn.discordapp.com/attachments/986288476834123799/987469337357062204/Nev11erulezelen.png")
+                                        .setFooter("Kő Papir Olló 2 Open BETA", "https://cdn.discordapp.com/attachments/986288476834123799/987469337357062204/Nev11erulezelen.png")
+                                        .addFields(
+                                    
+                                            [...choices.keys()].map((key: DISCORDJs.User) => 
+                                            {
+                                                const x = {
+                                                    name : choices.get(key)!,
+                                                    value: key.username,
+                                                    inline: true
+                                                }
+                                                return x
+                                            })
+                                        
+                                         )
+                                        .setImage(winner.displayAvatarURL())
+        return winner_embed
     }
 }
 

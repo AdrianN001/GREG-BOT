@@ -94,7 +94,9 @@ export default {
     
                             
                     console.log(collected.user, value)
-                    collected.deferUpdate()
+                    collected.deferUpdate() // deferUpdate szukseges ahhoz, hogy lenyegebe mukodjon
+
+                    // https://youtu.be/n1hr0Idv4hQ?t=997 A MEGMENTO
     
                     dmchannel_1.send({content: `${value}-t választottad ki`})
 
@@ -114,13 +116,31 @@ export default {
         
                                 
                         console.log(collected.user, value)
-                        collected.deferUpdate()
+                        collected.deferUpdate() // deferUpdate szukseges ahhoz, hogy lenyegebe mukodjon
+
+                        // https://youtu.be/n1hr0Idv4hQ?t=997 A MEGMENTO
         
                         dmchannel_2.send({content: `${value}-t választottad ki`})
     
                                 
                             })
-                        }
+
+                //gathering INFO
+
+                delay(6000) // ez kell ahhoz, hogy nehogy koran vegye fel a vegso dontest
+
+            
+                const winner = game.decision(choices.get(player_1)!,choices.get(player_2)!)
+
+                if (!winner)
+                {
+                    message.channel.send({embeds : [game.generate_draw(choices)]})
+                    return;
+                }
+
+                message.channel.send({embeds: [game.generate_winner(choices,winner)]})
+
+                }
                 
                 
                 
