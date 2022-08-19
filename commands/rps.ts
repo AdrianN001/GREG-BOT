@@ -83,6 +83,8 @@ export default {
 
 
                             console.log(collected.user, value)
+
+                            collected.reply({content: `${value}-t választottad ki`})
                         }
                     })
                 })
