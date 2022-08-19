@@ -71,15 +71,15 @@ export default {
                 // attach collector to every embed that has been sended
 
                 
-                // const dmchannel_1 = player_1.dmChannel || await player_1.createDM(true)
-                // const dmchannel_2 = player_2.dmChannel || await player_2.createDM(true)  
+                const dmchannel_1 = player_1.dmChannel || await player_1.createDM(true)
+                const dmchannel_2 = player_2.dmChannel || await player_2.createDM(true)  
 
-                const [dmchannel_1, dmchannel_2] = messages
+                // const [dmchannel_1, dmchannel_2] = messages
 
-                for (message of messages)
-                {
-                    console.log(message)
-                }
+                // for (message of messages)
+                // {
+                //     console.log(message)
+                // }
                         
 
                 let collector_1 = dmchannel_1.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 60000})
@@ -94,15 +94,15 @@ export default {
     
                             
                     console.log(collected.user, value)
-    
-                    collected.reply({content: `${value}-t választottad ki`})
-
                     collected.deferUpdate()
+    
+                    dmchannel_1.send({content: `${value}-t választottad ki`})
+
                             
                     })
                     
 
-                let collector_2 = dmchannel_2.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 60000})
+                let collector_2 = dmchannel_2.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 60000, max: 12})
     
                 collector_2.on("collect", (collected) => {
                                 
@@ -114,10 +114,10 @@ export default {
         
                                 
                         console.log(collected.user, value)
-        
-                        collected.reply({content: `${value}-t választottad ki`})
-    
                         collected.deferUpdate()
+        
+                        dmchannel_2.send({content: `${value}-t választottad ki`})
+    
                                 
                             })
                         }
