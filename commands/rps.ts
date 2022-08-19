@@ -31,7 +31,7 @@ export default {
 
         
         
-        reply_collector.on("collect", (message: DISCORDjs.Message) => {
+        reply_collector.on("collect", async (message: DISCORDjs.Message) => {
             if (message.content.toLowerCase() !== "igen" ) {
                 message.channel.send("Visszautasitva ):"); 
                 reply_collector.stop(); 
@@ -70,36 +70,58 @@ export default {
 
                 // attach collector to every embed that has been sended
 
-                players.forEach(async (player:DISCORDjs.User) => 
-                {
-                        const dmchannel = player.dmChannel || await player.createDM(true) 
+                
+                const dmchannel_1 = player_1.dmChannel || await player_1.createDM(true)
+                const dmchannel_2 = player_2.dmChannel || await player_2.createDM(true)  
                         
 
-                        let collector = dmchannel.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 6000})
+                let collector_1 = dmchannel_1.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 60000})
     
-                        collector.on("collect", (collected) => {
+                collector_1.on("collect", (collected) => {
                             
-                            console.log("asdsda")
+                    console.log("asdsda")
                             
                 
-                            const value = collected.values[0]
-                            choices.set(collected.user, value)
+                    const value = collected.values[0]
+                    choices.set(collected.user, value)
     
                             
-                            console.log(collected.user, value)
+                    console.log(collected.user, value)
     
-                            collected.reply({content: `${value}-t választottad ki`})
+                    collected.reply({content: `${value}-t választottad ki`})
 
-                            collected.deferUpdate()
+                    collected.deferUpdate()
                             
-                        })
-                    }
-                )
+                    })
+                    
+
+                let collector_2 = dmchannel_2.createMessageComponentCollector({ componentType: "SELECT_MENU", time: 60000})
+    
+                collector_2.on("collect", (collected) => {
+                                
+                    console.log("asdsda")
+                                
+                    
+                        const value = collected.values[0]
+                        choices.set(collected.user, value)
+        
+                                
+                        console.log(collected.user, value)
+        
+                        collected.reply({content: `${value}-t választottad ki`})
+    
+                        collected.deferUpdate()
+                                
+                            })
+                        }
+                
+                
+                
                 
                 
                 
         }
-    })
+    )
     }
 
 
