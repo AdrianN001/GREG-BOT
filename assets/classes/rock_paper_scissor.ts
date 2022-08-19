@@ -20,18 +20,16 @@ class RPS
 
     public static delay = (ms: number | undefined) => new Promise(res => setTimeout(res, ms));
 
-    public async decision( first: string, second: string, map: Map< DISCORDJs.User, string>) :  Promise< User | void >
+    public async decision( choices: Map< DISCORDJs.User, string>) :  Promise< User | void >
     {
         await RPS.delay(15000)
 
-        for (const [key, value] of map)
-        {
-            console.log(`${key} -> ${value}`)
-        }
+        const first = choices.get(this.player_1)!
+        const second = choices.get(this.player_2)!
         
 
         if (first === second) {return }
-        let win: boolean = RPS.MAP.get(first)!.includes(second)
+        let win: boolean  = RPS.MAP.get(first)!.includes(second)
 
         return win ? this.player_1 : this.player_2
     }

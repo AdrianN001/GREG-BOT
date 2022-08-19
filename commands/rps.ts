@@ -86,14 +86,14 @@ export default {
     
                 collector_1.on("collect", (collected) => {
                             
-                    console.log("asdsda")
+                    
                             
                 
                     const value = collected.values[0]
                     choices.set(player_1, value)
     
                             
-                    console.log(collected.user, value)
+                    
                     collected.deferUpdate() // deferUpdate szukseges ahhoz, hogy lenyegebe mukodjon
 
                     // https://youtu.be/n1hr0Idv4hQ?t=997 A MEGMENTO
@@ -108,14 +108,14 @@ export default {
     
                 collector_2.on("collect", (collected) => {
                                 
-                    console.log("asdsda")
+                    
                                 
                     
                         const value = collected.values[0]
                         choices.set(player_2, value)
         
                                 
-                        console.log(collected.user, value)
+                        
                         collected.deferUpdate() // deferUpdate szukseges ahhoz, hogy lenyegebe mukodjon
 
                         // https://youtu.be/n1hr0Idv4hQ?t=997 A MEGMENTO
@@ -130,7 +130,7 @@ export default {
                 
 
             
-                const winner = await game.decision(choices.get(player_1)!,choices.get(player_2)!, choices) //await-elni kell, mivel tartalmaz egy 7 sec-es delay-t
+                const winner = await game.decision( choices) //await-elni kell, mivel tartalmaz egy 7 sec-es delay-t
 
                 if (!winner)
                 {
