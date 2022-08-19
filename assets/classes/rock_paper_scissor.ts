@@ -24,6 +24,9 @@ class RPS
     {
         await RPS.delay(15000)
 
+        console.log(first)
+        console.log(second)
+
         if (first === second) {return }
         let win: boolean = RPS.MAP.get(first)!.includes(second)
 
@@ -58,7 +61,7 @@ class RPS
                         .setTitle("Kő papir Olló")
                         .setAuthor("11.E Rulez")
                         .setColor("#0099ff")
-                        .addField("Arra kérnélek most meg, hogy válasszál a listábol egyet, erre 12 másodperced van", `Jelenlegi ellenfeled: ${enemy.username} `, false)
+                        .addField("Arra kérnélek most meg, hogy válasszál a listábol egyet, erre 7 másodperced van", `Jelenlegi ellenfeled: ${enemy.username} `, false)
                         .addField("Segitség képpen itt van egy rajz a lehetséges választásokról", "A nyil mindig afelé mutat amit megver", false)
                         .setFooter("az elenfeled is jelenleg ugyanezt látja")
                         //.setImage("attachments://assets/imgs/PCB_NYAK.png")
