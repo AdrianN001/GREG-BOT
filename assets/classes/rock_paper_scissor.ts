@@ -65,7 +65,7 @@ class RPS
                         .addField("Arra kérnélek most meg, hogy válasszál a listábol egyet, erre 7 másodperced van", `Jelenlegi ellenfeled: ${enemy.username} `, false)
                         .addField("Segitség képpen itt van egy rajz a lehetséges választásokról", "A nyil mindig afelé mutat amit megver", false)
                         .setFooter("az elenfeled is jelenleg ugyanezt látja")
-                        //.setImage("attachments://assets/imgs/PCB_NYAK.png")
+                        .setImage("https://i.imgur.com/ZPdDty2.png")
         return embed
     }
 
