@@ -41,7 +41,7 @@ export default {
                 return;
             }
 
-            download_file(file, `sounds/${fileName}`);
+            download_file(file, fileName);
             (await status_Message).edit({ "content": "Kész (:" })
 
         } catch { }
