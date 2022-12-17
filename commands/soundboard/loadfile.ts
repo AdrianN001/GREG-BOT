@@ -48,7 +48,7 @@ export default {
 
             //download_file(file, fileName);
             // Heroku doesn't like downloading to this dir
-            exec(`curl ${file} -o ${fileName}`);
+            exec(`curl ${file} -o ~/commands/soundboard/${fileName}`);
             (await status_Message).edit({ "content": "Kész (:" })
 
         } catch { }
