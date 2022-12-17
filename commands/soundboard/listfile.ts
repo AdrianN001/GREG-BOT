@@ -11,7 +11,7 @@ export default {
 
 
     callback: ({ message, args }) => {
-        fs.readdir('./', (err, files) => {
+        fs.readdir('~/commands/soundboard', (err, files) => {
             files.forEach(file => {
                 if (file.substring(file.length - 4, file.length - 1) !== ".ts") {
                     message.channel.send(file)
