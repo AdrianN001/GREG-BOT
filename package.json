@@ -25,6 +25,7 @@
     "discord.js": "^13.8.0",
     "dotenv": "^16.0.1",
     "download": "^8.0.0",
+    "ffmpeg-static": "^5.1.0",
     "gifenc": "^1.0.3",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",

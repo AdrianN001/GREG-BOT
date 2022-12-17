@@ -14,12 +14,12 @@ export default {
 
 
     callback: ({ message, args }) => {
-        if (!message.guild?.id) {
+        if (!message.guild?.id || !message.member!.voice.channel!.id) {
             message.reply("HIBA");
             return;
         }
         const connection = joinVoiceChannel({
-            channelId: message.channel.id,
+            channelId: message.member!.voice.channel!.id,
             guildId: message.guild!.id,
             adapterCreator: message.guild!.voiceAdapterCreator,
         });
