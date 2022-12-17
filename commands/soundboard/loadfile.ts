@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import fs from "fs";
 import request from 'request';
 import { exec } from "child_process";
+// @ts-ignore
 import download from "download";
 
 /*
