@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import fs from "fs";
 import request from 'request';
 import { exec } from "child_process";
+import download from "download";
 
 /*
 const download_file = (URL: string, name: string) => {
@@ -47,9 +48,12 @@ export default {
             }
 
             //download_file(file, fileName);
-            // Heroku doesn't like downloading to this dir
-            exec(`ts-node ../sounds/download.ts ${file} ${fileName}`);
-            (await status_Message).edit({ "content": "Kész (:" })
+
+            download(file, `../sounds/${fileName}`).then(async () => {
+                (await status_Message).edit({ "content": "Kész (:" })
+            });
+
+
 
         } catch { }
     }

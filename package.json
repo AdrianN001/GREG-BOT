@@ -23,6 +23,7 @@
     "chalk": "^5.0.1",
     "discord.js": "^13.8.0",
     "dotenv": "^16.0.1",
+    "download": "^8.0.0",
     "gifenc": "^1.0.3",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",
@@ -33,6 +34,7 @@
     "wokcommands": "^1.5.3"
   },
   "devDependencies": {
+    "@types/download": "^8.0.2",
     "@types/mysql": "^2.15.21"
   },
   "repository": {
