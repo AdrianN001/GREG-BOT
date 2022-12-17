@@ -26,10 +26,8 @@ export default {
 
         const file: string | undefined = message.attachments.first()?.url;
         if (!file) { message.reply("Nem lett hang fajl hozzacsatolva az üzenethez"); return; }
-        const resource =
-            createAudioResource(file!, {
-                inlineVolume: true
-            })
+
+        const resource = createAudioResource(file!)
 
         const player = createAudioPlayer();
         connection.subscribe(player)
