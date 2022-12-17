@@ -17,10 +17,14 @@ export default {
         const separated = arg.split("")
         let res: string = ""
         for (let karakter of separated) {
+            if (karakter == " ") {
+                res += "    "
+                continue;
+            }
             res += `${karakter}${all_emoji[Math.floor(Math.random() * all_emoji.length)]}`
 
         }
-        return res
+        message.reply(res)
     }
 
 
