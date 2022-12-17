@@ -71,7 +71,7 @@ client.on('ready', () => {
         });
     new WOKCommands(client,
         {
-            commandDir: PATH.join(__dirname, 'commands/soundboard'),
+            commandDir: PATH.join(__dirname, 'commands/voice'),
             typeScript: true,
         });
 
