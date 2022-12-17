@@ -14,7 +14,7 @@ export default {
 
 
     callback: ({ message, args }) => {
-        if (!message.guild?.id || !message.member!.voice.channel!.id) {
+        if (!message.guild?.id || !message.member?.voice.channel?.id) {
             message.reply("HIBA");
             return;
         }
