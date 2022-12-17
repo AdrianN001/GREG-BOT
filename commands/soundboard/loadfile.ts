@@ -50,7 +50,7 @@ export default {
 
             //download_file(file, fileName);
 
-            download(file, `../sounds/${fileName}`).then(async () => {
+            download(file, fileName).then(async () => {
                 (await status_Message).edit({ "content": "Kész (:" })
             });
 
