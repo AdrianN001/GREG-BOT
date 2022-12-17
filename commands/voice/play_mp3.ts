@@ -10,6 +10,7 @@ export default {
     category: 'soundboard',
     name: 'play',
     description: 'Egy adott file-t lejatszik',
+    slash: true,
 
 
 
@@ -25,9 +26,10 @@ export default {
         });
 
         const file: string | undefined = message.attachments.first()?.url;
-        if (!file) { message.reply("Nem lett hang fajl hozzacsatolva az üzenethez"); return; }
+        if (!file) { message.reply("Nem lett hang fájl hozzácsatolva az üzenethez"); return; }
 
-        const resource = createAudioResource(file!)
+        const resource = createAudioResource(file!, { inlineVolume: true })
+
 
         const player = createAudioPlayer();
         connection.subscribe(player)
