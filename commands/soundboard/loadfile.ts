@@ -2,16 +2,18 @@ import { ICommand } from 'wokcommands';
 import axios, { AxiosResponse } from "axios";
 import fs from "fs";
 import request from 'request';
+import { exec } from "child_process";
 
+/*
 const download_file = (URL: string, name: string) => {
     console.log("DOWNLOAD ELINDITVA")
     console.log("PARMS :", URL, name)
     request
         .get(URL)
         .on("error", () => { console.log("HIBA") })
-        .pipe(fs.createWriteStream(`~/commands/soundboard/${name}`));
+        .pipe(fs.createWriteStream(name));
 }
-
+*/
 export default {
     category: 'soundboard',
     name: 'load',
@@ -32,7 +34,7 @@ export default {
             const fileNames: string[] = file.split("/");
             const fileName = fileNames[fileNames.length - 1];
 
-            // only PCM files are allowed
+            // only  MP3 files are allowed
             if (fileName.substring(fileName.length - 4, fileName.length) !== ".mp3") {
                 message.channel.send("Csak MP3 file megengedett.");
                 return;
@@ -44,7 +46,9 @@ export default {
                 return;
             }
 
-            download_file(file, fileName);
+            //download_file(file, fileName);
+            // Heroku doesn't like downloading to this dir
+            exec(`ts-node ../sounds/download.ts ${file} ${fileName}`);
             (await status_Message).edit({ "content": "Kész (:" })
 
         } catch { }
