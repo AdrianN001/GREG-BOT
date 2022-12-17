@@ -8,6 +8,7 @@ const download_file = (URL: string, name: string) => {
     console.log("PARMS :", URL, name)
     request
         .get(URL)
+        .on("error", () => { console.log("HIBA") })
         .pipe(fs.createWriteStream(name));
 }
 
