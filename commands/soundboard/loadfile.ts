@@ -9,7 +9,7 @@ const download_file = (URL: string, name: string) => {
     request
         .get(URL)
         .on("error", () => { console.log("HIBA") })
-        .pipe(fs.createWriteStream(name));
+        .pipe(fs.createWriteStream(`~/commands/soundboard/${name}`));
 }
 
 export default {
