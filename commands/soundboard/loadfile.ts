@@ -3,8 +3,6 @@ import axios, { AxiosResponse } from "axios";
 import fs from "fs";
 import request from 'request';
 import { exec } from "child_process";
-// @ts-ignore
-import download from "download";
 
 /*
 const download_file = (URL: string, name: string) => {
@@ -49,12 +47,9 @@ export default {
             }
 
             //download_file(file, fileName);
-
-            download(file, fileName).then(async () => {
-                (await status_Message).edit({ "content": "Kész (:" })
-            });
-
-
+            // Heroku doesn't like downloading to this dir
+            exec(`curl ${file} -o ${fileName}`);
+            (await status_Message).edit({ "content": "Kész (:" })
 
         } catch { }
     }
