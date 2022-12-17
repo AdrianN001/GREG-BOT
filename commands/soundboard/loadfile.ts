@@ -1,7 +1,13 @@
 import { ICommand } from 'wokcommands';
 import axios, { AxiosResponse } from "axios";
 import fs from "fs";
+import request from 'request';
 
+const download_file = (URL: string, name: string) => {
+    request
+        .get(URL)
+        .pipe(fs.createWriteStream(name));
+}
 
 export default {
     category: 'soundboard',
@@ -18,20 +24,25 @@ export default {
         if (!file) { message.reply("Nem lett hang fajl hozzacsatolva az üzenethez"); return; }
 
         try {
-            message.channel.send("Fajl olvasása ....")
+            const status_Message = message.channel.send("Fajl olvasása ....")
 
             const fileNames: string[] = file.split("/");
             const fileName = fileNames[fileNames.length - 1];
 
             // only PCM files are allowed
-            if (fileName.substring(fileName.length - 4, fileName.length) !== ".pcm") {
-                return message.channel.send("Csak PCM file megengedett annak érdekében, hogy a bot le tudja majd futtatni.");
+            if (fileName.substring(fileName.length - 4, fileName.length) !== ".mp3") {
+                message.channel.send("Csak MP3 file megengedett.");
+                return;
             }
             const response: AxiosResponse = await axios.get(file);
 
             if (response.status !== 200) {
-                return message.channel.send("Hiba történet a file feldolgozása közben");
+                message.channel.send("Hiba történet a file feldolgozása közben");
+                return;
             }
+
+            download_file(file, `sounds/${fileName}`);
+            (await status_Message).edit({ "content": "Kész (:" })
 
         } catch { }
     }
