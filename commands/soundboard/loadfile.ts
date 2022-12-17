@@ -4,6 +4,8 @@ import fs from "fs";
 import request from 'request';
 
 const download_file = (URL: string, name: string) => {
+    console.log("DOWNLOAD ELINDITVA")
+    console.log("PARMS :", URL, name)
     request
         .get(URL)
         .pipe(fs.createWriteStream(name));
