@@ -10,7 +10,6 @@ export default {
     category: 'soundboard',
     name: 'play',
     description: 'Egy adott file-t lejatszik',
-    slash: true,
 
 
 
