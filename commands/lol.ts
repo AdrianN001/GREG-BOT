@@ -27,7 +27,7 @@ export default
                         format: 'png'
                     })
 
-                    message.channel.send(new MessageAttachment(output_buffer))
+                    message.channel.send({ files: [new MessageAttachment(output_buffer)] })
                 })
 
 
